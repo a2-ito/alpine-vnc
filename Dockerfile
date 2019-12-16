@@ -1,0 +1,24 @@
+FROM alpine:3.10
+
+# For overlapping 
+RUN apk --no-cache add ttf-dejavu kbd
+
+RUN apk --no-cache add x11vnc xvfb openbox xfce4-terminal supervisor sudo chromium \
+&& addgroup alpine \
+&& adduser  -G alpine -s /bin/sh -D alpine \
+&& echo "alpine:alpine" | /usr/sbin/chpasswd \
+&& echo "alpine    ALL=(ALL) ALL" >> /etc/sudoers \
+&& rm -rf /apk /tmp/* /var/cache/apk/*
+
+RUN apk --no-cache add font-ipa ibus-anthy --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
+
+RUN apk --no-cache add dbus-x11 python zenity \
+&& rm -rf /apk /tmp/* /var/cache/apk/*
+
+#RUN cp ./repositories /etc/apk/repositories
+
+ADD etc /etc
+WORKDIR /home/alpine
+EXPOSE 5900
+USER alpine
+CMD ["/usr/bin/supervisord","-c","/etc/supervisord.conf"]
