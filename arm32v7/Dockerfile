@@ -17,6 +17,7 @@ RUN \
         ttf-dejavu numix-themes-gtk2 adwaita-icon-theme \
         chromium
 
+# install supervisor and sudo
 RUN \
   apk --update --no-cache add supervisor sudo && \
   addgroup alpine && \
