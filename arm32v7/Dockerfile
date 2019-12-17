@@ -1,5 +1,6 @@
 FROM arm32v7/alpine:3.10
 
+# configure timezone
 ENV TZ 'Australia/Sydney'
 RUN apk upgrade --no-cache \
     && apk add --no-cache bash tzdata \
