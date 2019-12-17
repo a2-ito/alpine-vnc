@@ -8,6 +8,13 @@ https://github.com/multiarch/qemu-user-static
 In terms of the version of ARM arhcitecture related to the version of the base image, which is alpine Linux,
 the raspberry Pi 3 may have 64-bit CPU, bur for now its default Linux OS remains at 32 bits. Therefore, it should be 
 ARM 32bit architecture.
+
+## Environment
+```
+Red Hat Enterprise Linux Server release 7.6 (Maipo)
+VirtualBox 6.0
+
+```
  
 ## Docker Build for x86 container
 ```
@@ -33,11 +40,11 @@ docker run --rm --privileged multiarch/qemu-user-static:register
 
 ### Build Conatainer
 ```
-docker build . -t alpine-vnc-arm
+docker build . -t alpine-vnc:arm32v7
 ```
 
 ## Docker run 
 ```
-docker run -d -p 5900:5900 --privileged --name alpine-vn alpine-vnc
+docker run -d -p 5900:5900 --privileged --name alpine-vnc alpine-vnc
 ```
 
