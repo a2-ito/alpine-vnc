@@ -23,7 +23,7 @@ RUN \
   echo "alpine:alpine" | /usr/sbin/chpasswd && \
   echo "alpine    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Install Japanese environment
+# install Japanese environment
 RUN \
   apk --no-cache add font-ipa ibus-anthy
 
