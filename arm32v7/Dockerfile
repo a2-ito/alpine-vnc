@@ -1,11 +1,11 @@
 FROM arm32v7/alpine:3.10
 
 # configure timezone
-ENV TZ 'Australia/Sydney'
-RUN apk upgrade --no-cache \
-    && apk add --no-cache bash tzdata \
-    && cp /usr/share/zoneinfo/Australia/Sydney /etc/localtime \
-    && echo ${TZ} > /etc/timezone
+#ENV TZ 'Australia/Sydney'
+#RUN apk upgrade --no-cache \
+#    && apk add --no-cache bash tzdata \
+#    && cp /usr/share/zoneinfo/Australia/Sydney /etc/localtime \
+#    && echo ${TZ} > /etc/timezone
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 

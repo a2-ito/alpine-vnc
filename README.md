@@ -13,7 +13,7 @@ ARM 32bit architecture.
 ```
 Red Hat Enterprise Linux Server release 7.6 (Maipo)
 VirtualBox 6.0
-
+Vagrant 
 ```
  
 ## Docker Build for x86 container
