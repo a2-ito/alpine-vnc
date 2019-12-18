@@ -7,6 +7,7 @@ FROM arm32v7/alpine:3.10
 #    && cp /usr/share/zoneinfo/Australia/Sydney /etc/localtime \
 #    && echo ${TZ} > /etc/timezone
 
+# add repository
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
 # install VNC & the desktop system
