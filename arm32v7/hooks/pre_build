@@ -4,7 +4,8 @@
 env
 
 echo "########################################################################"
-curl https://raw.githubusercontent.com/a2-ito/alpine-vnc/master/Dockerfile | _POSIX2_VERSION=199209 tail +3
+curl https://raw.githubusercontent.com/a2-ito/alpine-vnc/master/Dockerfile | _POSIX2_VERSION=199209 tail +3 >> Dockerfile-test
+cat Dockerfile-test
 echo "########################################################################"
 
 # Register qemu-*-static for all supported processors except the 
