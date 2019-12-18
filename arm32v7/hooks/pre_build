@@ -1,4 +1,11 @@
 #!/bin/bash
+
+env
+
+echo "########################################################################"
+curl https://raw.githubusercontent.com/a2-ito/alpine-vnc/master/Dockerfile | _POSIX2_VERSION=199209 tail +3
+echo "########################################################################"
+
 # Register qemu-*-static for all supported processors except the 
 # current one, but also remove all registered binfmt_misc before
 docker run --rm --privileged multiarch/qemu-user-static:register --reset
