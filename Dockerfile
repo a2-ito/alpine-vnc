@@ -14,7 +14,7 @@ RUN \
         exo xfce4-whiskermenu-plugin gtk-xfce-engine thunar numix-themes-xfwm4 \
         xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4 xsetroot \
         ttf-dejavu numix-themes-gtk2 adwaita-icon-theme \
-        chromium
+        unrar firefox-esr
 
 RUN \
   apk --update --no-cache add supervisor sudo && \
