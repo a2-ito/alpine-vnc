@@ -23,7 +23,7 @@ RUN \
         xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4 xsetroot \
         ttf-dejavu numix-themes-gtk2 adwaita-icon-theme \
         unrar
-RUN apk --update --no-cache add chromium
+RUN apk --update --no-cache add firefox-esr
 
 RUN \
   apk --update --no-cache add supervisor sudo && \
