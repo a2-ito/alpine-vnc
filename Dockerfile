@@ -10,8 +10,6 @@ COPY qemu-${ARCH}-static /usr/bin
 # add repository
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
-#RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing firefox
-
 # install VNC & the desktop system
 RUN uname -ar > /uname.build
 RUN apk --update add file
@@ -22,8 +20,7 @@ RUN \
         exo xfce4-whiskermenu-plugin gtk-xfce-engine thunar numix-themes-xfwm4 \
         xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4 xsetroot \
         ttf-dejavu numix-themes-gtk2 adwaita-icon-theme \
-        unrar
-RUN apk --update --no-cache add firefox-esr
+        unrar ${BROWSER}
 
 RUN \
   apk --update --no-cache add supervisor sudo && \
