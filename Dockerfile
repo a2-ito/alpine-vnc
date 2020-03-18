@@ -1,3 +1,4 @@
+#FROM ${BASE_IMAGE_PREFIX}php:apache-buste1
 # see hooks/build and hooks/.config
 ARG BASE_IMAGE_PREFIX
 FROM ${BASE_IMAGE_PREFIX}alpine:3.10
@@ -9,7 +10,7 @@ COPY qemu-${ARCH}-static /usr/bin
 # add repository
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
-RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing firefox
+#RUN apk --no-cache add --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing firefox
 
 # install VNC & the desktop system
 RUN uname -ar > /uname.build
@@ -22,7 +23,7 @@ RUN \
         xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4 xsetroot \
         ttf-dejavu numix-themes-gtk2 adwaita-icon-theme \
         unrar
-RUN apk --update --no-cache add firefox-esr
+RUN apk --update --no-cache add chromium
 
 RUN \
   apk --update --no-cache add supervisor sudo && \
