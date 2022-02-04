@@ -31,7 +31,14 @@ RUN \
 
 # Install Japanese environment
 RUN \
-  apk --no-cache add font-ipa ibus-anthy
+  apk --no-cache add ibus-anthy
+
+# add repository
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+
+# Install Japanese environment
+RUN \
+  apk --no-cache add font-ipa
 
 # clean-up
 RUN \
@@ -42,4 +49,9 @@ ADD etc /etc
 WORKDIR /home/alpine
 EXPOSE 5900
 USER alpine
+
+RUN echo 'export GTK_IM_MODULE=ibus' >> ~/.bashrc
+RUN echo 'export XMODIFIERS=@im=ibus' >> ~/.bashrc
+RUN echo 'export QT_IM_MODULE=ibus' >> ~/.bashrc
+
 CMD ["sudo","/usr/bin/supervisord","-c","/etc/supervisord.conf"]
