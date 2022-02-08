@@ -1,7 +1,7 @@
 #FROM ${BASE_IMAGE_PREFIX}php:apache-buste1
 # see hooks/build and hooks/.config
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}alpine:3.10
+FROM ${BASE_IMAGE_PREFIX}alpine:3.15
 
 # see hooks/post_checkout
 #ARG ARCH
