@@ -4,11 +4,12 @@ FROM alpine:3.15
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
 # install VNC & the desktop system
-RUN uname -ar > /uname.build
+RUN uname -ar > /uname.build && \
+    apk --update add file
 
 # install VNC & the desktop system
 RUN \
-  apk --update --no-cache add file x11vnc shadow xvfb \
+  apk --update --no-cache add x11vnc shadow xvfb \
         exo xfce4-whiskermenu-plugin thunar numix-themes-xfwm4 \
         xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4 xsetroot \
         ttf-dejavu numix-themes-gtk2 adwaita-icon-theme \
