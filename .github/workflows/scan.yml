@@ -17,4 +17,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           image: a2ito/alpine-vnc
           issue: 'true'
-          token: ${{ secrets.GITHUB_TOKEN }}
