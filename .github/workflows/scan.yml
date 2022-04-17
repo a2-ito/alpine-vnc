@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull docker image
-        run: docker pull a2ito/alpine-vnc
+        run: docker pull nginx
 
       - uses: homoluctus/gitrivy@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          image: a2ito/alpine-vnc
+          image: nginx
           issue: 'true'
