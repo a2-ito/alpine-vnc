@@ -12,7 +12,7 @@ jobs:
       - name: Pull docker image
         run: docker pull nginx
 
-      - uses: homoluctus/gitrivy@v3
+      - uses: lazy-actions/gitrivy@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           image: nginx
