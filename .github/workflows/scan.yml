@@ -12,7 +12,7 @@ jobs:
       - name: Pull docker image
         run: docker pull a2ito/alpine-vnc
 
-      - uses: homoluctus/gitrivy@v1.0.0
+      - uses: homoluctus/gitrivy@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           image: a2ito/alpine-vnc
