@@ -16,4 +16,4 @@ jobs:
       - uses: lazy-actions/gitrivy@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          image: alpine-vnc
+          image: a2ito/alpine-vnc
