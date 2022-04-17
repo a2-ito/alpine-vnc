@@ -1,8 +1,9 @@
 name: Vulnerability Scan
 
-on:
-  schedule:
-    - cron: '0 9 * * *'
+on: push
+#on:
+#  schedule:
+#    - cron: '0 9 * * *'
 
 jobs:
   scan:
