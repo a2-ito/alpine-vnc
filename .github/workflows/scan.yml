@@ -5,15 +5,27 @@ on: push
 #  schedule:
 #    - cron: '0 9 * * *'
 
+name: build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 jobs:
-  scan:
-    name: Daily Vulnerability Scan
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
     steps:
-      - name: Pull docker image
-        run: docker pull a2ito/alpine-vnc
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - uses: lazy-actions/gitrivy@v3
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          image: a2ito/alpine-vnc
+          image-ref: 'docker.io/a2ito/alpine-vnc:${{ github.sha }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
