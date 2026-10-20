@@ -5,7 +5,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 
 # install VNC & the desktop system
 RUN uname -ar > /uname.build && \
-    apk --update add file
+    apk --update --no-cache add file
 
 # install VNC & the desktop system
 RUN \
