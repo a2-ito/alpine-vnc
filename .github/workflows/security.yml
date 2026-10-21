@@ -1,0 +1,33 @@
+name: Security
+
+# Trivy（依存の脆弱性・IaC の設定ミス・秘密情報）と CodeQL（自分たちのコード）を、
+# a2-ito/shared-workflows の再利用ワークフローで回す。中身と版はそちらで管理する。
+on:
+  pull_request:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 21 * * *" # 毎日 6:00 (JST)
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  trivy:
+    uses: a2-ito/shared-workflows/.github/workflows/trivy.yml@main
+    permissions:
+      contents: read
+      security-events: write
+
+  codeql:
+    uses: a2-ito/shared-workflows/.github/workflows/codeql.yml@main
+    with:
+      languages: '["actions"]'
+    permissions:
+      contents: read
+      security-events: write
