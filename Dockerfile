@@ -1,7 +1,6 @@
-FROM alpine:3.15
-
-# add repository
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+# 3.23 では ibus-anthy と font-ipa が標準のリポジトリ（community）にあるので、
+# edge の testing / community を混ぜずに済む。安定版と edge を混ぜると依存が解けなくなる
+FROM alpine:3.23
 
 # install VNC & the desktop system
 RUN uname -ar > /uname.build && \
@@ -25,9 +24,6 @@ RUN \
 # Install Japanese environment
 RUN \
   apk --no-cache add ibus-anthy
-
-# add repository
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
 # Install Japanese environment
 RUN \
