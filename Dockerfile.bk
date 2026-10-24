@@ -2,6 +2,9 @@
 ARG BASE_IMAGE_PREFIX
 FROM ${BASE_IMAGE_PREFIX}alpine
 
+# パイプの途中のコマンド（chpasswd に渡す echo など）が失敗しても RUN を落とす
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
+
 # see hooks/post_checkout
 ARG ARCH
 COPY qemu-${ARCH}-static /usr/bin
@@ -38,7 +41,7 @@ RUN \
   apk del tzdata && \
   rm -Rf /apk /tmp/* /var/cache/apk/*
 
-ADD etc /etc
+COPY etc /etc
 WORKDIR /home/alpine
 EXPOSE 5900
 USER alpine

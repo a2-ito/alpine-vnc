@@ -2,6 +2,9 @@
 # edge の testing / community を混ぜずに済む。安定版と edge を混ぜると依存が解けなくなる
 FROM alpine:3.23
 
+# パイプの途中のコマンド（chpasswd に渡す echo など）が失敗しても RUN を落とす
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
+
 # install VNC & the desktop system
 RUN uname -ar > /uname.build && \
     apk --update --no-cache add file
