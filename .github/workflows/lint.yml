@@ -1,0 +1,20 @@
+name: Lint
+
+# 言語ごとの formatter と linter（Prettier・gofmt / go vet・ruff・terraform fmt / tflint・
+# shfmt / shellcheck・hadolint・actionlint）を、a2-ito/shared-workflows の再利用ワークフローで回す。
+# 中身と版はそちらで管理する。Prettier から外すファイルは .prettierignore に書く。
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    uses: a2-ito/shared-workflows/.github/workflows/lint.yml@main
